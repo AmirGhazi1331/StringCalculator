@@ -1,5 +1,9 @@
 #include <iostream>
+#include "calc.h"
+using namespace std;
 
-int main() {
-  std::cout << "Hello World!\n";
+int main()
+{
+  calc calculator;
+  calculator.Getinput();
 }
