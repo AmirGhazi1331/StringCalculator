@@ -12,6 +12,7 @@ class calc
      void Getinput();
      void Plus(string,string);
      void Minus(string,string);
+     void Mult(string,string);
 
   private:
      vector <string> history;

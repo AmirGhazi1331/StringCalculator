@@ -22,6 +22,11 @@ void calc::Getinput()
   {
       Minus(temp[0],temp[2]);
   }
+  if(temp[1]=="*")
+  {
+      Mult(temp[0],temp[2]);
+  }
+
 }
 
 void calc::Plus(string First, string Second)
@@ -46,6 +51,29 @@ void calc::Minus(string First, string Second)
      finallen = Second.length()-First.length();
      cout<<finallen<<" "<<Second.substr(0,finallen)<<endl;
      history.push_back(Second.substr(0,finallen));
+  }
+}
+
+void calc::Mult(string First, string Second)
+{
+  string Final;
+  if(First.length()>=Second.length())
+  {
+    for(int i =0;i<First.length();i++)
+    {
+      Final+=Second;
+    }
+    cout<<Final<<endl;
+    history.push_back(Final);
+  }
+  else 
+  {
+    for(int i =0;i<Second.length();i++)
+    {
+      Final+=First;
+    }
+    cout<<Final<<endl;
+    history.push_back(Final);
   }
   
 }
