@@ -16,7 +16,4 @@ class calc
   private:
      vector <string> history;
     
-
-
-
 };

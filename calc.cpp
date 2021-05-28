@@ -14,9 +14,13 @@ void calc::Getinput()
       temp[i]=word;
       i++;
   }
-  if(temp[1]=="+")//check operator and pass it to its function
+  if(temp[1]=="+")//check operator and call function
   {
       Plus(temp[0],temp[2]);
+  }
+  if(temp[1]=="-")
+  {
+      Minus(temp[0],temp[2]);
   }
 }
 
@@ -27,4 +31,21 @@ void calc::Plus(string First, string Second)
   cout<<both<<endl;
   history.push_back(both);
 }
+
+void calc::Minus(string First, string Second)
+{
+  int finallen ;
+  if(First.length()>=Second.length())
+  {
+     finallen = First.length()-Second.length();
+     cout<<finallen<<" "<<First.substr(0,finallen)<<endl;
+     history.push_back(First.substr(0,finallen));
+  }
+  else 
+  {
+     finallen = Second.length()-First.length();
+     cout<<finallen<<" "<<Second.substr(0,finallen)<<endl;
+     history.push_back(Second.substr(0,finallen));
+  }
   
+}
