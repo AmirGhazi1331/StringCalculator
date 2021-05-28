@@ -14,7 +14,17 @@ void calc::Getinput()
       temp[i]=word;
       i++;
   }
-  cout<<temp[0]<<endl;
-  cout<<temp[1]<<endl;
-  cout<<temp[2]<<endl;
+  if(temp[1]=="+")//check operator and pass it to its function
+  {
+      Plus(temp[0],temp[2]);
+  }
 }
+
+void calc::Plus(string First, string Second)
+{
+  string both = First + Second;
+  sort(both.begin(), both.end());
+  cout<<both<<endl;
+  history.push_back(both);
+}
+  
