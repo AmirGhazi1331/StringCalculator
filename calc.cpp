@@ -14,6 +14,17 @@ void calc::Getinput()
       temp[i]=word;
       i++;
   }
+  if(temp[0].empty()==true||temp[1].empty()==true||temp[2].empty()==true)
+  {
+    if(temp[0]=="history")
+    {
+       hisprint();
+    }
+    else
+    {
+       throw "your order is not valid";
+    }
+  }
   if(temp[1]=="+")//check operator and call function
   {
       Plus(temp[0],temp[2]);
@@ -49,6 +60,10 @@ void calc::Getinput()
   if(temp[1]=="+=")
   {
       Plusassign(temp[0],temp[2]);
+  }
+  if(temp[1]=="-=")
+  {
+      Minusassign(temp[0],temp[2]);
   }
 
 }
@@ -256,4 +271,48 @@ void calc::Plusassign(string First, string Second)
   }
   cout<<output<<endl;
   history.push_back(output);
+}
+void calc::Minusassign(string First, string Second)
+{
+  int count = findCount(First, Second);
+  int place;
+  for(int i=0;i<count;i++)
+  {
+    place=First.find(Second);
+    First.erase(place, Second.length());
+  }
+  cout<<First<<endl;
+  history.push_back(First);
+}
+void calc::hisprint()
+{
+  for(auto h:history)
+  {
+    cout<<h<<endl;
+  }
+}
+int calc::findCount(string str1, string str2)
+{
+  int len = str1.size();
+  int len2 = str2.size();
+  int ans = INT_MAX;
+ 
+  // Initialize hash for both strings
+  int hash1[26] = { 0 }, hash2[26] = { 0 };
+ 
+  // hash the frequency of letters of str1
+  for (int i = 0; i < len; i++)
+      hash1[str1[i] - 'a']++;
+ 
+  // hash the frequency of letters of str2
+  for (int i = 0; i < len2; i++)
+      hash2[str2[i] - 'a']++;
+ 
+  // Find the count of str2 constructed from str1
+  for (int i = 0; i < 26; i++)
+      if (hash2[i])
+          ans = min(ans, hash1[i] / hash2[i]);
+ 
+  // Return answer
+  return ans;
 }

@@ -19,10 +19,14 @@ class calc
      void Or(string,string);
      void Not(string,string);
      void Plusassign(string,string);
+     void Minusassign(string,string);
 
      
 
   private:
      vector <string> history;
+     int findCount(string , string );
+     void hisprint();
+
     
 };

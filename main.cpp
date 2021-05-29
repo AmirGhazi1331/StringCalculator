@@ -5,5 +5,15 @@ using namespace std;
 int main()
 {
   calc calculator;
-  calculator.Getinput();
+  loop:
+  try
+  {
+    calculator.Getinput();
+  }
+  catch (const char* msg) 
+  {
+    cerr << msg << endl;
+  }
+  goto loop;
+  return 0;
 }
