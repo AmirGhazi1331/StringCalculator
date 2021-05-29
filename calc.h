@@ -17,6 +17,7 @@ class calc
      void Smaller(string,string);
      void And(string,string);
      void Or(string,string);
+     void Not(string,string);
 
      
 

@@ -42,6 +42,10 @@ void calc::Getinput()
   {
       Or(temp[0],temp[2]);
   }
+  if(temp[1]=="!=")
+  {
+      Not(temp[0],temp[2]);
+  }
 
 }
 
@@ -218,4 +222,22 @@ void calc::Or(string First, string Second)
     cout<<"False"<<endl;
     history.push_back("False");
   }
+}
+
+void calc::Not(string First, string Second)
+{
+  string left;
+  string right;
+  char target=Second[0];
+  int i=0;
+  while(First[i]!=target)
+  {
+    
+    left+=First[i];
+    i++;
+  }
+  right= First.substr(left.length()+1,First.length());
+  string output=right +Second[0]+ left;
+  cout<<output<<endl;
+  history.push_back(output);
 }
