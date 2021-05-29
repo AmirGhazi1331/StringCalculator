@@ -30,6 +30,18 @@ void calc::Getinput()
   {
       Division(temp[0],temp[2]);
   }
+  if(temp[1]=="<")
+  {
+      Smaller(temp[0],temp[2]);
+  }
+  if(temp[1]=="&&")
+  {
+      And(temp[0],temp[2]);
+  }
+  if(temp[1]=="||")
+  {
+      Or(temp[0],temp[2]);
+  }
 
 }
 
@@ -111,4 +123,99 @@ void calc::Division(string First, string Second)
   }
   cout<<output<<endl;
   history.push_back(output);
+}
+
+void calc::Smaller(string First, string Second)
+{
+  int firstint[First.length()]; //cast First chars to int
+  for(int i=0;i<First.length();i++) 
+  {
+    firstint[i]=(int)First[i];
+  }
+  int target = (int)Second[0]; 
+  string output;
+  for(int i=0;i<First.length();i++)
+  {
+    if(firstint[i]<target)
+    {
+      output+=(char)firstint[i]; // add chars below the target
+    }
+  }
+  cout<<output<<endl;
+  history.push_back(output);
+}
+void calc::And(string First, string Second)
+{
+  bool left=false;
+  bool right = false;
+  string target="aeiou";
+  for(int i=0;i<First.length();i++) 
+  {
+    for(int j=0;j<target.length();j++)
+    {
+      if(First[i]==target[j])
+      {
+        left=true;
+      }
+    }
+  }
+  for(int i=0;i<Second.length();i++) 
+  {
+    for(int j=0;j<target.length();j++)
+    {
+      if(Second[i]==target[j])
+      {
+        right=true;
+      }
+    }
+  }
+  if(left==true&&right==true)
+  {
+    cout<<"True"<<endl;
+    history.push_back("True");
+
+  }
+  else
+  {
+    cout<<"False"<<endl;
+    history.push_back("False");
+  }
+}
+
+void calc::Or(string First, string Second)
+{
+  bool left=false;
+  bool right = false;
+  string target="aeiou";
+  for(int i=0;i<First.length();i++) 
+  {
+    for(int j=0;j<target.length();j++)
+    {
+      if(First[i]==target[j])
+      {
+        left=true;
+      }
+    }
+  }
+  for(int i=0;i<Second.length();i++) 
+  {
+    for(int j=0;j<target.length();j++)
+    {
+      if(Second[i]==target[j])
+      {
+        right=true;
+      }
+    }
+  }
+  if(left==true||right==true)
+  {
+    cout<<"True"<<endl;
+    history.push_back("True");
+
+  }
+  else
+  {
+    cout<<"False"<<endl;
+    history.push_back("False");
+  }
 }
