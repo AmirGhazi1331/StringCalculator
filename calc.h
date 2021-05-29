@@ -13,6 +13,8 @@ class calc
      void Plus(string,string);
      void Minus(string,string);
      void Mult(string,string);
+     void Division(string,string);
+     
 
   private:
      vector <string> history;
