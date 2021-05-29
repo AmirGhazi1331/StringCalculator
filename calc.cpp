@@ -46,6 +46,10 @@ void calc::Getinput()
   {
       Not(temp[0],temp[2]);
   }
+  if(temp[1]=="+=")
+  {
+      Plusassign(temp[0],temp[2]);
+  }
 
 }
 
@@ -232,12 +236,24 @@ void calc::Not(string First, string Second)
   int i=0;
   while(First[i]!=target)
   {
-    
     left+=First[i];
     i++;
   }
   right= First.substr(left.length()+1,First.length());
   string output=right +Second[0]+ left;
+  cout<<output<<endl;
+  history.push_back(output);
+}
+void calc::Plusassign(string First, string Second)
+{
+  string output;
+  for(int i=0;i<First.length();i++)
+  {
+    string temp;
+    temp += First[i];
+    temp += Second[0];
+    output+=temp;
+  }
   cout<<output<<endl;
   history.push_back(output);
 }

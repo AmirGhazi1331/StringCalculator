@@ -18,6 +18,7 @@ class calc
      void And(string,string);
      void Or(string,string);
      void Not(string,string);
+     void Plusassign(string,string);
 
      
 
